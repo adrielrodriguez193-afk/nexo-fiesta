@@ -1,0 +1,125 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+@theme {
+  --color-nexo-red: #830000;
+  --color-nexo-red-light: #a01010;
+  --color-nexo-silver: #D3D3D3;
+  --color-nexo-cream: #FFFDEF;
+  --color-nexo-black: #0E0E0E;
+}
+
+@font-face {
+  font-family: 'Horizon';
+  src: url('/fonts/Horizon.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0E0E0E;
+  color: #FFFDEF;
+  font-family: 'Archivo Black', sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #830000;
+  color: #FFFDEF;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0E0E0E;
+}
+::-webkit-scrollbar-thumb {
+  background: #830000;
+  border-radius: 3px;
+}
+
+.font-horizon {
+  font-family: 'Horizon', 'Archivo Black', sans-serif;
+}
+
+.font-archivo {
+  font-family: 'Archivo Black', sans-serif;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 253, 239, 0.08) 25%,
+    rgba(211, 211, 211, 0.15) 50%,
+    rgba(255, 253, 239, 0.08) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(131, 0, 0, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(131, 0, 0, 0.6); }
+}
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.grain::after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.5;
+}
+
+.noise-bg {
+  position: relative;
+}
+.noise-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+.disco-grid {
+  background-image:
+    linear-gradient(rgba(131, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(131, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
